@@ -3,7 +3,7 @@
  */
 import Vue from 'vue'
 import App from '../component/index.vue'
-
+import $ from 'jquery'
 new Vue({
     el: '#app',
     render: h => h(App)

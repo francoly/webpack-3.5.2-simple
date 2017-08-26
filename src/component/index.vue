@@ -5,6 +5,8 @@
 </template>
 
 <script>
+    import $ from 'jquery'
+    console.log($('body'));
     export default {
         name: 'app',
         data:function () {

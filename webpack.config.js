@@ -19,14 +19,12 @@ var HTML={  //每一个html都会生成一个页面
         removeComments:true,  //移除HTML中的注释
         collapseWhitespace:false  //删除空白符与换行符
     },
-    chunks:['index']  //此入口写引入的js文件,可引入公共模块
+    chunks:['index','vendor']  //此入口写引入的js文件,可引入公共模块
 };
 module.exports = {
     entry: {
-        index: './src/js/index.js'
-        //vendor: [  //公共部分代码
-        //    ''
-        //]
+        index: './src/js/index.js',
+        vendor: ['vue','jquery' ]
     },
     devtool: 'inline-source-map', //webpack调试工具 不要用于生产
     //devServer: {
@@ -65,6 +63,10 @@ module.exports = {
                options: {
                    name: '[name].[ext]?[hash]'
                }
+           },
+           {
+               test: /\.css$/,
+               use: [ 'style-loader', 'css-loader' ]
            }
        ]
    },
@@ -98,9 +100,9 @@ module.exports = {
         }),
         //--------- 提供公共代码 优化手段之一
         //new webpack.optimize.CommonsChunkPlugin('common'), // 默认会把所有入口节点的公共代码提取出来,生成一个common.js 必须手动引入html页面中
-        //new webpack.optimize.CommonsChunkPlugin({ //选择vendor中模块的公共代码
-        //    name: 'vendor'
-        //}),
+        new webpack.optimize.CommonsChunkPlugin({ //选择vendor中模块的公共代码
+            name: 'vendor'
+        }),
         //new webpack.optimize.CommonsChunkPlugin({  //除vendor以外的所有公共代码
         //    name: 'runtime'
         //}),
