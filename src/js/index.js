@@ -1,22 +1,10 @@
 /**
- * Created by francoly on 2017/8/8.
+ * Created by Administrator on 2017/8/26.
  */
- import _ from 'lodash';
- import print from 'print';
- const test01 = require('./test01');//同步
- const test02 = require('./test02');//同步
- import './../css/index.css';
- import './../css/test01.less';
-    function component() {
-        var element = document.createElement('div');
+import Vue from 'vue'
+import App from '../component/index.vue'
 
-           // Lodash, currently included via a script, is required for this line to work
-        // Lodash, now imported by this script
-        element.innerHTML = _.join(['Hello', '6665555'], ' ');
-        return element;
-    }
-require.ensure(['./print.js'],function(){  //异步
-    console.log('异步加载的内容??')
-},'print');
-console.log('非异步加载的内容');
-document.body.appendChild(component());
+new Vue({
+    el: '#app',
+    render: h => h(App)
+});

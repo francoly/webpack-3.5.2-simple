@@ -11,7 +11,7 @@ var HTML={  //每一个html都会生成一个页面
     //可以自定义扩展参数在如:css参数, 在模板页面进行接收扩展!
     filename:'index.html',  //生成的html存放路径，相对于 path
     template:'./src/tpls/template.js',  //html模板路径
-    title: 'anguleJS',
+    title: 'vue',
     cache: true,
     inject:true,  //允许插件修改哪些内容，包括head与body
     hash:false,  //为静态资源生成hash值
@@ -19,14 +19,14 @@ var HTML={  //每一个html都会生成一个页面
         removeComments:true,  //移除HTML中的注释
         collapseWhitespace:false  //删除空白符与换行符
     },
-    chunks:['app','vendor','runtime']  //此入口写引入的js文件,可引入公共模块
+    chunks:['index']  //此入口写引入的js文件,可引入公共模块
 };
 module.exports = {
     entry: {
-        app: './src/js/index.js',
-        vendor: [  //公共部分代码
-            'lodash'
-        ]
+        index: './src/js/index.js'
+        //vendor: [  //公共部分代码
+        //    ''
+        //]
     },
     devtool: 'inline-source-map', //webpack调试工具 不要用于生产
     //devServer: {
@@ -34,30 +34,45 @@ module.exports = {
     //    hot: true //开启热更新
     //},
    module: {
-         rules: [
-             {
-                 test: /\.css$/,
-                 use: ExtractTextPlugin.extract({  //css提取代码
-                     fallback: "style-loader",
-                     use: "css-loader"
-                 })
-             },
-             {
-                 test: /\.less$/,
-                 use: ExtractTextPlugin.extract({
-                     fallback: 'style-loader',
-                     //resolve-url-loader may be chained before sass-loader if necessary
-                     use: ['css-loader', 'less-loader']
-                 })
-             }
-         ]
+       rules: [
+           {
+               test: /\.vue$/,
+               loader: 'vue-loader',
+               options: {
+                   loaders: {
+                       // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
+                       // the "scss" and "sass" values for the lang attribute to the right configs here.
+                       // other preprocessors should work out of the box, no loader config like this necessary.
+                       'scss': 'vue-style-loader!css-loader!sass-loader',
+                       'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+                   }
+                   // other vue-loader options go here
+               }
+           },
+           {
+               test: /\.js$/,
+               exclude: /(node_modules|bower_components)/,
+               use: {
+                   loader: 'babel-loader',
+                   options: {
+                       presets: ['env']
+                   }
+               }
+           },
+           {
+               test: /\.(png|jpg|gif|svg)$/,
+               loader: 'file-loader',
+               options: {
+                   name: '[name].[ext]?[hash]'
+               }
+           }
+       ]
    },
-    resolve: {
-        alias: {//别名
-            print: path.resolve('./src/js/print.js')
-
-        }
-    },
+    //resolve: {
+    //    alias: {//别名
+    //        print: path.resolve('')
+    //    }
+    //},
     plugins: [
         //----------生成html页面
         new HtmlWebpackPlugin(HTML), //生成html页面
@@ -83,12 +98,12 @@ module.exports = {
         }),
         //--------- 提供公共代码 优化手段之一
         //new webpack.optimize.CommonsChunkPlugin('common'), // 默认会把所有入口节点的公共代码提取出来,生成一个common.js 必须手动引入html页面中
-        new webpack.optimize.CommonsChunkPlugin({ //选择vendor中模块的公共代码
-            name: 'vendor'
-        }),
-        new webpack.optimize.CommonsChunkPlugin({  //除vendor以外的所有公共代码
-            name: 'runtime'
-        }),
+        //new webpack.optimize.CommonsChunkPlugin({ //选择vendor中模块的公共代码
+        //    name: 'vendor'
+        //}),
+        //new webpack.optimize.CommonsChunkPlugin({  //除vendor以外的所有公共代码
+        //    name: 'runtime'
+        //}),
         // 默认会把所有入口节点的公共代码提取出来,生成一个common.js
         // 只提取main节点和index节点
         //new webpack.optimize.CommonsChunkPlugin('common.js',['main','index']),

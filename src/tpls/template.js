@@ -1,9 +1,9 @@
 /**
- * Created by francoly on 2017/8/9.
+ * Created by Administrator on 2017/8/26.
  */
 module.exports = function (templateParams) {
     return (
-  `<!DOCTYPE html>
+        `<!DOCTYPE html>
     <html>
     <head>
     <meta charset="utf-8">
@@ -23,7 +23,7 @@ module.exports = function (templateParams) {
     <meta name="format-detection" content="telephone=no">
     </head>
     <body>
-    <div id="root" style="height:100%"></div>
+    <div id="app" style="height:100%"></div>
     <!--<div>development mode</div>-->
     </body>
     </html>`
