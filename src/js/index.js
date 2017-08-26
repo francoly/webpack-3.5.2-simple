@@ -2,11 +2,11 @@
  * Created by francoly on 2017/8/8.
  */
  import _ from 'lodash';
+ import print from 'print';
  const test01 = require('./test01');//同步
  const test02 = require('./test02');//同步
- import './css/index.css';
- import './css/test01.less';
- import './css/test02.css';
+ import './../css/index.css';
+ import './../css/test01.less';
     function component() {
         var element = document.createElement('div');
 

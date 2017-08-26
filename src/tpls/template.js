@@ -8,7 +8,7 @@ module.exports = function (templateParams) {
     <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> ${templateParams.htmlWebpackPlugin.options.css} </title>
+    <title> ${templateParams.htmlWebpackPlugin.options.title} </title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="author" content=""/>
     <meta name="keywords" content="">

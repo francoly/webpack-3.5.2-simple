@@ -10,9 +10,8 @@ var HTML={  //每一个html都会生成一个页面
     // favicon:'./src/img/favicon.ico', //favicon路径
     //可以自定义扩展参数在如:css参数, 在模板页面进行接收扩展!
     filename:'index.html',  //生成的html存放路径，相对于 path
-    template:'./src/template.js',  //html模板路径
-    title: '11',
-    css:'css',
+    template:'./src/tpls/template.js',  //html模板路径
+    title: 'anguleJS',
     cache: true,
     inject:true,  //允许插件修改哪些内容，包括head与body
     hash:false,  //为静态资源生成hash值
@@ -24,7 +23,7 @@ var HTML={  //每一个html都会生成一个页面
 };
 module.exports = {
     entry: {
-        app: './src/index.js',
+        app: './src/js/index.js',
         vendor: [  //公共部分代码
             'lodash'
         ]
@@ -53,6 +52,12 @@ module.exports = {
              }
          ]
    },
+    resolve: {
+        alias: {//别名
+            print: path.resolve('./src/js/print.js')
+
+        }
+    },
     plugins: [
         //----------生成html页面
         new HtmlWebpackPlugin(HTML), //生成html页面
