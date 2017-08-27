@@ -5,7 +5,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 //var WebpackMd5Hash = require('webpack-md5-hash');//更改[chunkhash],使其js不被引入的css影响 好像webpack 3.0 不用了
 const webpack = require('webpack');
 
-var HTML={  //每一个html都会生成一个页面
+//html页面生成参数
+var Index={  //每一个html都会生成一个页面
     //根据模板插入css/js等生成最终HTML
     // favicon:'./src/img/favicon.ico', //favicon路径
     //可以自定义扩展参数在如:css参数, 在模板页面进行接收扩展!
@@ -21,9 +22,26 @@ var HTML={  //每一个html都会生成一个页面
     },
     chunks:['index','vendor']  //此入口写引入的js文件,可引入公共模块
 };
+var Goods={
+    filename:'goods.html',  //生成的html存放路径，相对于 path
+    template:'./src/tpls/template.js',  //html模板路径
+    title: 'vue',
+    cache: true,
+    inject:true,  //允许插件修改哪些内容，包括head与body
+    hash:false,  //为静态资源生成hash值
+    minify:{  //压缩HTML文件
+        removeComments:true,  //移除HTML中的注释
+        collapseWhitespace:false  //删除空白符与换行符
+    },
+    chunks:['goods','vendor']  //此入口写引入的js文件,可引入公共模块
+};
+
+//路径配置
+const COMP='./src/component/';//组件路径配置
 module.exports = {
     entry: {
-        index: './src/js/index.js',
+        index: COMP+'index',//首页
+        goods:COMP+'goods/goods.js',//产品页
         vendor: ['vue','jquery' ]
     },
     devtool: 'inline-source-map', //webpack调试工具 不要用于生产
@@ -77,7 +95,8 @@ module.exports = {
     //},
     plugins: [
         //----------生成html页面
-        new HtmlWebpackPlugin(HTML), //生成html页面
+        new HtmlWebpackPlugin(Index), //生成html页面
+        new HtmlWebpackPlugin(Goods),
         //-------调用热更新插件
         //new webpack.HotModuleReplacementPlugin(),
         //--------css提取参数
