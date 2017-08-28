@@ -3,12 +3,10 @@
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Goods from './goods.vue'
-import Goods_detail from './goods_detail.vue'
-import Goods_list from './goods_list.vue'
+import Personal from './personal.vue'
 import $ from 'jquery'
 Vue.use(VueRouter);
-//·������  //��Ҫ�Ӻ�׺
+//
 var routes=[
     //{
     //    path:'/goods.html',
@@ -26,11 +24,11 @@ var routes=[
 
 ];
 const router=new VueRouter({
-    scrollBehavior: () => ({ y: 0 }), // ��������������Ϊ���������Ĭ�Ͼͻ����ԭ����������λ��
+    scrollBehavior: () => ({ y: 0 }), // ��������������
     routes
 });
 new Vue({
     el: '#app',
     router,
-    render: h => h(Goods)
+    render: h => h(Personal)
 });

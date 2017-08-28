@@ -3,12 +3,10 @@
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Goods from './goods.vue'
-import Goods_detail from './goods_detail.vue'
-import Goods_list from './goods_list.vue'
+import Login from './login.vue'
 import $ from 'jquery'
 Vue.use(VueRouter);
-//·������  //��Ҫ�Ӻ�׺
+//
 var routes=[
     //{
     //    path:'/goods.html',
@@ -32,5 +30,5 @@ const router=new VueRouter({
 new Vue({
     el: '#app',
     router,
-    render: h => h(Goods)
+    render: h => h(Login)
 });
