@@ -8,10 +8,10 @@ import $ from 'jquery'
 Vue.use(VueRouter);
 //
 var routes=[
-    //{
-    //    path:'/goods.html',
-    //    component:Goods_list
-    //},
+    {
+        path:'/login.html',
+        component:Login
+    }
     //{
     //    path:'/goods_detail',
     //    component:Goods_detail

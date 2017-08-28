@@ -35,13 +35,96 @@ var Goods={
     },
     chunks:['goods','vendor']  //此入口写引入的js文件,可引入公共模块
 };
-
+var login={
+    filename:'login.html',  //生成的html存放路径，相对于 path
+    template:'./src/tpls/template.js',  //html模板路径
+    title: 'vue',
+    cache: true,
+    inject:true,  //允许插件修改哪些内容，包括head与body
+    hash:false,  //为静态资源生成hash值
+    minify:{  //压缩HTML文件
+        removeComments:true,  //移除HTML中的注释
+        collapseWhitespace:false  //删除空白符与换行符
+    },
+    chunks:['login','vendor']  //此入口写引入的js文件,可引入公共模块
+};
+var Personal={
+    filename:'personal.html',  //生成的html存放路径，相对于 path
+    template:'./src/tpls/template.js',  //html模板路径
+    title: 'vue',
+    cache: true,
+    inject:true,  //允许插件修改哪些内容，包括head与body
+    hash:false,  //为静态资源生成hash值
+    minify:{  //压缩HTML文件
+        removeComments:true,  //移除HTML中的注释
+        collapseWhitespace:false  //删除空白符与换行符
+    },
+    chunks:['personal','vendor']  //此入口写引入的js文件,可引入公共模块
+};
+var Pinpai={
+    filename:'pinpai.html',  //生成的html存放路径，相对于 path
+    template:'./src/tpls/template.js',  //html模板路径
+    title: 'vue',
+    cache: true,
+    inject:true,  //允许插件修改哪些内容，包括head与body
+    hash:false,  //为静态资源生成hash值
+    minify:{  //压缩HTML文件
+        removeComments:true,  //移除HTML中的注释
+        collapseWhitespace:false  //删除空白符与换行符
+    },
+    chunks:['pinpai','vendor']  //此入口写引入的js文件,可引入公共模块
+};
+var Products={
+    filename:'products.html',  //生成的html存放路径，相对于 path
+    template:'./src/tpls/template.js',  //html模板路径
+    title: 'vue',
+    cache: true,
+    inject:true,  //允许插件修改哪些内容，包括head与body
+    hash:false,  //为静态资源生成hash值
+    minify:{  //压缩HTML文件
+        removeComments:true,  //移除HTML中的注释
+        collapseWhitespace:false  //删除空白符与换行符
+    },
+    chunks:['products','vendor']  //此入口写引入的js文件,可引入公共模块
+};
+var Register={
+    filename:'register.html',  //生成的html存放路径，相对于 path
+    template:'./src/tpls/template.js',  //html模板路径
+    title: 'vue',
+    cache: true,
+    inject:true,  //允许插件修改哪些内容，包括head与body
+    hash:false,  //为静态资源生成hash值
+    minify:{  //压缩HTML文件
+        removeComments:true,  //移除HTML中的注释
+        collapseWhitespace:false  //删除空白符与换行符
+    },
+    chunks:['register','vendor']  //此入口写引入的js文件,可引入公共模块
+}
+var shopping_cart={
+    filename:'shopping.html',  //生成的html存放路径，相对于 path
+    template:'./src/tpls/template.js',  //html模板路径
+    title: 'vue',
+    cache: true,
+    inject:true,  //允许插件修改哪些内容，包括head与body
+    hash:false,  //为静态资源生成hash值
+    minify:{  //压缩HTML文件
+        removeComments:true,  //移除HTML中的注释
+        collapseWhitespace:false  //删除空白符与换行符
+    },
+    chunks:['shopping_cart','vendor']  //此入口写引入的js文件,可引入公共模块
+};
 //路径配置
-const COMP='./src/component/';//组件路径配置
+const COMP='./src/components/';//组件路径配置
 module.exports = {
     entry: {
-        index: COMP+'index',//首页
-        goods:COMP+'goods/goods.js',//产品页
+        index: COMP+'index',
+        goods:COMP+'goods/goods.js',
+        login:COMP+'login/login.js',
+        personal:COMP+'personal/personal.js',
+        pinpai:COMP+'pinpai/pinpai.js',
+        register:COMP+'register/register.js',
+        products:COMP+'products/products.js',
+        shoppingCart:COMP+'shopping_cart/shopping_cart.js',
         vendor: ['vue','jquery' ]
     },
     devtool: 'inline-source-map', //webpack调试工具 不要用于生产
@@ -97,6 +180,12 @@ module.exports = {
         //----------生成html页面
         new HtmlWebpackPlugin(Index), //生成html页面
         new HtmlWebpackPlugin(Goods),
+        new HtmlWebpackPlugin(login),
+        new HtmlWebpackPlugin(Personal),
+        new HtmlWebpackPlugin(Pinpai),
+        new HtmlWebpackPlugin(Products),
+        new HtmlWebpackPlugin(Register),
+        new HtmlWebpackPlugin(shopping_cart),
         //-------调用热更新插件
         //new webpack.HotModuleReplacementPlugin(),
         //--------css提取参数

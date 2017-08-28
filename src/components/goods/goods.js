@@ -8,28 +8,24 @@ import Goods_detail from './goods_detail.vue'
 import Goods_list from './goods_list.vue'
 import $ from 'jquery'
 Vue.use(VueRouter);
-//路由配置  //需要加后缀
 var routes=[
     {
-        path:'/goods.html',
+        path:'/',
         component:Goods_list
     },
     {
-        path:'/goods_detail',
+        path:'/goods_detail/:id',
         component:Goods_detail
     }
-    ,
-    {
-        path: '*',
-        component: Goods_list
-    }
-
 ];
 const router=new VueRouter({
-    scrollBehavior: () => ({ y: 0 }), // 滚动条滚动的行为，不加这个默认就会记忆原来滚动条的位置
+    scrollBehavior: () => ({ y: 0 }),
     routes
 });
 new Vue({
+    data:{
+      fu_msg:'fufufufu'
+    },
     el: '#app',
     router,
     render: h => h(Goods)

@@ -1,18 +1,22 @@
 <template>
     <div id="app">
-        <h1>{{msg}}</h1>
+        <h1>{{$route.params.id}}</h1>
     </div>
 </template>
 
 <script>
-    import $ from 'jquery'
-    console.log($('body'));
     export default {
         name: 'app',
         data:function () {
             return {
-                msg: 'Welcome to Your Vue.js goods_detail'
+                msg: 'Welcome to Your Vue.js goods_detail',
             }
+        },
+        mounted:function(){
+            console.log(this.msg);
+        },
+        motheds:{
+
         }
     }
 </script>

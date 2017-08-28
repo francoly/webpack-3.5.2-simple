@@ -29,6 +29,6 @@ const router=new VueRouter({
 });
 new Vue({
     el: '#app',
-    router,
+    //router,
     render: h => h(Personal)
 });

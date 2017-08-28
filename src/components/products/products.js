@@ -10,7 +10,7 @@ var routes=[
 
 ];
 const router=new VueRouter({
-    scrollBehavior: () => ({ y: 0 }), // ��������������Ϊ���������Ĭ�Ͼͻ����ԭ����������λ��
+    scrollBehavior: () => ({ y: 0 }),
     routes
 });
 new Vue({
