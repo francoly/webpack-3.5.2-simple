@@ -7,6 +7,7 @@ import Goods from './goods.vue'
 import Goods_detail from './goods_detail.vue'
 import Goods_list from './goods_list.vue'
 import $ from 'jquery'
+window.Hub = new Vue();//通用通信
 Vue.use(VueRouter);
 var routes=[
     {

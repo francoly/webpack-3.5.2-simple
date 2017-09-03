@@ -8,6 +8,7 @@
 </template>
 
 <script>
+
     export default {
         name: 'app',
         data:function () {
@@ -15,7 +16,15 @@
                 msg: 'Welcome to Your Vue.js goods_list',
 
             }
-        }
+        },
+         created:function() {
+            var me=this;
+           window.Hub.$on('change',function(msg){
+            me.msg=msg;
+            console.log(msg)
+           });
+          }
+
     }
 </script>
 

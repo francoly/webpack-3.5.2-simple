@@ -128,10 +128,12 @@ module.exports = {
         vendor: ['vue','jquery' ]
     },
     devtool: 'inline-source-map', //webpack调试工具 不要用于生产
-    //devServer: {
-    //    contentBase: './dist' , //文件地址
-    //    hot: true //开启热更新
-    //},
+    devServer: {
+        contentBase: './dist' , //文件地址
+        host: '192.168.3.51',
+        inline: true,
+        port: 8090
+    },
    module: {
        rules: [
            {
